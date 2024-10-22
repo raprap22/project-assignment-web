@@ -17,8 +17,8 @@ import {
     ListItemIcon,
     ListItemText,
     Typography,
-} from "@material-ui/core";
-import { Check } from "@material-ui/icons";
+} from "@mui/material";
+import Check from "@mui/icons-material/Check";
 import { ROUTES_PATH } from "@constants/config";
 
 const Index: FC = () => {

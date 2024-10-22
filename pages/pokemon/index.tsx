@@ -1,16 +1,26 @@
-import React, { FC } from "react";
+import { useRouter } from "next/router";
+import React, { FC, useRef } from "react";
 import useTranslation from "next-translate/useTranslation";
-import { Box, Container, Typography } from "@material-ui/core";
+import Landing from "./container/Landing";
+import PokeDex from "./container/PokeDex";
 
 const PokemonList: FC = () => {
     const { t } = useTranslation();
+    const router = useRouter();
+
+    const pokeDexRef = useRef<HTMLElement | null>(null);
+
+    const handleCheckPokedex = () => {
+        if (pokeDexRef.current) {
+            pokeDexRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
     return (
-        <Container maxWidth="xl">
-            <Box component="div" m={10}>
-                <Typography>List Pokemon</Typography>
-            </Box>
-        </Container>
+        <>
+            <Landing onCheckPokedex={handleCheckPokedex} />
+            <PokeDex pokeDexRef={pokeDexRef} />
+        </>
     );
 };
 
